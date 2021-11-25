@@ -11,7 +11,7 @@ items:
   kind: ConfigMap
   metadata:
     name: {{ printf "%s-%s" (include "grafana-dashboards.fullname" $) $dashboardName | trunc 63 | trimSuffix "-" }}
-    namespace: {{ template "grafana-dashboards-grafana.namespace" $ }}
+    namespace: {{ template "grafana-dashboards.namespace" $ }}
     labels:
       {{- if $.Values.label }}
       {{ $.Values.label }}: "1"

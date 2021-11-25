@@ -1,3 +1,8 @@
+{{/* Expand the name of the chart. This is suffixed with -alertmanager, which means subtract 13 from longest 63 available */}}
+{{- define "grafana-dashboards.name" -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 50 | trimSuffix "-" -}}
+{{- end }}
+
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
@@ -22,6 +27,17 @@ The longest name that gets created adds and extra 37 characters, so truncation s
 {{- define "grafana-dashboards.chartref" -}}
 {{- replace "+" "_" .Chart.Version | printf "%s-%s" .Chart.Name -}}
 {{- end }}
+
+{{/*
+Allow the release namespace to be overridden for multi-namespace deployments in combined charts
+*/}}
+{{- define "grafana-dashboards.namespace" -}}
+  {{- if .Values.namespaceOverride -}}
+    {{- .Values.namespaceOverride -}}
+  {{- else -}}
+    {{- .Release.Namespace -}}
+  {{- end -}}
+{{- end -}}
 
 {{/* Generate basic labels */}}
 {{- define "grafana-dashboards.labels" }}
