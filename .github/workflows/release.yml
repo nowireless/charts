@@ -26,6 +26,7 @@ jobs:
       - name: Add Helm Repos
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add nowireless-base-charts https://nowireless.github.io/base-charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
