@@ -26,6 +26,27 @@ entries:
     version: 0.1.0
   grafana-dashboards:
   - apiVersion: v2
+    created: "2021-11-25T04:36:24.100810732Z"
+    description: Helm chart containing additional Grafana dashboards
+    digest: 8b6c71a38baecab24c03c9a55dc9ea56954b1cbde377f50d504fdb768634410e
+    name: grafana-dashboards
+    sources:
+    - https://grafana.com/grafana/dashboards/11315
+    - https://grafana.com/grafana/dashboards/11314
+    - https://grafana.com/grafana/dashboards/11311
+    - https://grafana.com/grafana/dashboards/11312
+    - https://grafana.com/grafana/dashboards/11313
+    - https://grafana.com/grafana/dashboards/11310
+    - https://github.com/mitchellrj/hue_exporter/blob/master/docs/grafana.json
+    - https://grafana.com/grafana/dashboards/2842
+    - https://grafana.com/grafana/dashboards/5336
+    - https://grafana.com/grafana/dashboards/5342
+    - https://github.com/ceph/ceph/tree/octopus/monitoring/grafana/dashboards
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/grafana-dashboards-0.5.0/grafana-dashboards-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     created: "2021-11-25T02:46:25.332930591Z"
     description: Helm chart containing additional Grafana dashboards
     digest: 18914ed795a187252a956c3359e13953b335ac06f0944d77dfc14222e4ba2c5f
