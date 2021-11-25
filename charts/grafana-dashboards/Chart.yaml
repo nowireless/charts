@@ -3,7 +3,7 @@ apiVersion: v2
 description: Helm chart containing additional Grafana dashboards
 name: grafana-dashboards
 type: application
-version: 0.3.0
+version: 0.4.0
 sources:
 - https://grafana.com/grafana/dashboards/11315
 - https://grafana.com/grafana/dashboards/11314
@@ -12,3 +12,7 @@ sources:
 - https://grafana.com/grafana/dashboards/11313
 - https://grafana.com/grafana/dashboards/11310
 - https://github.com/mitchellrj/hue_exporter/blob/master/docs/grafana.json
+- https://grafana.com/grafana/dashboards/2842
+- https://grafana.com/grafana/dashboards/5336
+- https://grafana.com/grafana/dashboards/5342
+- https://github.com/ceph/ceph/tree/octopus/monitoring/grafana/dashboards

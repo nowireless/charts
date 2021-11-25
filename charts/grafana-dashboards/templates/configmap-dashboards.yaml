@@ -1,6 +1,6 @@
 
 # Based on https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/templates/grafana/configmap-dashboards.yaml
-{{- $files := .Files.Glob "dashboards/*.json" }}
+{{- $files := .Files.Glob "dashboards/**.json" }}
 {{- if $files }}
 apiVersion: v1
 kind: ConfigMapList
