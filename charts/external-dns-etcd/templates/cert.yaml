@@ -1,0 +1,49 @@
+#
+# The Following should move into the external-dns super chart
+#
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: etcd-client-cert
+  namespace: external-dns
+spec:
+  dnsNames:
+    - "external-dns-etcd" # Endpoint for in the same namespace
+    - "*.external-dns-etcd.external-dns.svc.cluster.local" 
+    - "*.external-dns-etcd-headless.external-dns.svc"
+    - "*.external-dns-etcd-headless.external-dns.svc.cluster.local"
+    - localhost
+    - ""
+  ipAddresses:
+    - 127.0.0.1
+  secretName: etcd-client-cert
+  usages:
+    - server auth
+    - client auth
+  issuerRef:
+    name: cluster-issuer
+    kind: ClusterIssuer
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: etcd-peer-cert
+  namespace: external-dns
+spec:
+  dnsNames:
+    - "*.external-dns-etcd.external-dns.svc.cluster.local" 
+    - "*.external-dns-etcd-headless.external-dns.svc"
+    - "*.external-dns-etcd-headless.external-dns.svc.cluster.local"
+    - localhost
+    - ""
+  ipAddresses:
+    - 127.0.0.1
+  secretName: etcd-peer-cert
+  usages:
+    - server auth
+    - client auth
+  issuerRef:
+    name: cluster-issuer
+    kind: ClusterIssuer

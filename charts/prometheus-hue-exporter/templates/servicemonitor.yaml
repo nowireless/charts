@@ -1,0 +1,17 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    {{- include "cray-service.common-labels" . | nindent 4}}
+  name: {{ include "cray-service.name" . }}
+spec:
+  endpoints:
+  - interval: 1m
+    path: /metrics
+    port: http
+    scrapeTimeout: 30s
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ include "cray-service.name" . }}
+      app.kubernetes.io/name: {{ include "cray-service.name" . }}

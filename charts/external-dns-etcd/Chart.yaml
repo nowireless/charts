@@ -1,0 +1,10 @@
+apiVersion: v2
+# appVersion: v0.10.3
+description: Helm chart to deploy etcd for external-dns
+name: external-dns-etcd
+type: application
+version: 0.1.0
+dependencies:
+- name: etcd
+  version: 5.6.1
+  repository: https://charts.bitnami.com/bitnami

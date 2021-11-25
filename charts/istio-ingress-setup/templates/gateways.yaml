@@ -1,0 +1,27 @@
+{{- range .Values.gateways }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ .name | quote }}
+spec:
+  selector:
+{{ $.Values.defaults.istioGatewaySelector | toYaml | indent 4 }}
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+{{ .hosts | toYaml | indent 4 }}
+    tls:
+      httpsRedirect: true # sends 301 redirect for http requests
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+{{ $.Values.defaults.tls | toYaml | indent 6 }}
+    hosts:
+{{ .hosts | toYaml | indent 4 }}
+{{- end }}

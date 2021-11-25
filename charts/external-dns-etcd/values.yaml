@@ -1,0 +1,28 @@
+# Default values for hack.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+etcd:
+  # global:
+  #   storageClass: csi-rbd-sc-fast
+  persistence:
+    enabled: true
+  statefulset:
+    replicaCount: 3
+  auth:
+    rbac:
+      enabled: false
+    client:
+      secureTransport: true
+      enableAuthentication: true
+      existingSecret: etcd-client-cert
+      certFilename: tls.crt
+      certKeyFilename: tls.key
+      caFilename: ca.crt
+    peer:
+      secureTransport: true
+      enableAuthentication: true
+      existingSecret: etcd-peer-cert
+      certFilename: tls.crt
+      certKeyFilename: tls.key
+      caFilename: ca.crt

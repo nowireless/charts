@@ -1,0 +1,6 @@
+apiVersion: v2
+# appVersion: v0.10.3
+description: Configure Istio gateways and services present in a namespace
+name: istio-ingress-setup
+type: application
+version: 0.1.0

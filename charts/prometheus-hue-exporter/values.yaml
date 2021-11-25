@@ -1,0 +1,41 @@
+---
+global:
+  chart:
+    name: prometheus-hue-exporter
+    version: 0.1.0
+  appVersion: 0.2.2
+
+cray-service:
+  type: Deployment # Don't create any application related pods
+  nameOverride: prometheus-hue-exporter
+  fullnameOverride: prometheus-hue-exporter
+  strategy:
+    type: Recreate
+  containers:
+  - name: hue-exporter
+    image:
+      repository: mitchellrj/hue_exporter
+    ports:
+    - name: http
+      containerPort: 9366
+    livenessProbe:
+      httpGet:
+        port: 9366
+        path: /
+      initialDelaySeconds: 15
+      periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        port: 9366
+        path: /metrics
+      initialDelaySeconds: 30
+      periodSeconds: 60
+      timeoutSeconds: 25
+    volumeMounts:
+    - name: exporter-config-vol
+      mountPath: /etc/hue_exporter/
+  volumes:
+    exporter-config-vol:
+      name: exporter-config-vol
+      secret:
+        secretName: prometheus-hue-exporter-config

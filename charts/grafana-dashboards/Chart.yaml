@@ -1,0 +1,6 @@
+apiVersion: v2
+# appVersion: v0.10.3
+description: Helm chart containing additional Grafana dashboards
+name: grafana-dashboards
+type: application
+version: 0.1.0

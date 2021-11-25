@@ -1,0 +1,30 @@
+---
+defaults:
+  tls:
+    mode: SIMPLE
+    credentialName: star-cluster-isbot-net-tls
+    minProtocolVersion: TLSV1_2
+  istioGatewaySelector:
+    istio: ingressgateway  # use Istio default gateway implementation
+
+
+gateways: []
+  # - name: chartmuseum-gateway
+  #   hosts:
+  #     - "charts.cluster.isbot.net"
+
+virtualServices: []
+  # - name: chartmuseum
+  #   hosts:
+  #   - "charts.cluster.isbot.net"
+  #   gateways:
+  #   - chartmuseum-gateway
+  #   http:
+  #   - match:
+  #     - uri:
+  #         prefix: /
+  #     route:
+  #     - destination:
+  #         port:
+  #           number: 8080
+  #         host: chartmuseum

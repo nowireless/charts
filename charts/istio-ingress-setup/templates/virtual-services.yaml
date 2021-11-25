@@ -1,0 +1,14 @@
+{{- range .Values.virtualServices }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .name | quote }}
+spec:
+  hosts:
+{{ .hosts | toYaml | indent 2 }}
+  gateways:
+{{ .gateways | toYaml | indent 2 }}
+  http:
+{{ .http | toYaml | indent 2 }}
+{{- end }}
