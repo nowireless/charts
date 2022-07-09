@@ -7,8 +7,9 @@ etcd:
   #   storageClass: csi-rbd-sc-fast
   persistence:
     enabled: true
-  statefulset:
-    replicaCount: 3
+
+  replicaCount: 3
+
   auth:
     rbac:
       enabled: false
