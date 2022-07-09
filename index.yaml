@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   cert-manager-init:
   - apiVersion: v2
+    created: "2022-07-09T02:45:38.542974423Z"
+    description: Setup cert-manager for use
+    digest: a3f3cda4f535fbfb4797de16ffe987e4036a9d5119f6cec5d6acffaae8d33664
+    name: cert-manager-init
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/cert-manager-init-0.3.0/cert-manager-init-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     created: "2021-11-25T00:34:36.182894075Z"
     description: Setup cert-manager for use
     digest: 2a66b16c6f7060b73dd3a2143a8ecc8dd34fee1d0901bf1f9e0e7280bf88ec7a
@@ -114,5 +123,40 @@ entries:
     type: application
     urls:
     - https://github.com/nowireless/charts/releases/download/prometheus-hue-exporter-0.1.0/prometheus-hue-exporter-0.1.0.tgz
+    version: 0.1.0
+  prometheus-ipmi-exporter:
+  - apiVersion: v2
+    appVersion: 1.4.0-b806738
+    created: "2022-07-09T02:45:38.713414256Z"
+    dependencies:
+    - name: cray-service
+      repository: https://nowireless.github.io/base-charts
+      version: 8.0.3
+    description: This is a Prometheus exporter for IPMI
+    digest: 5241554e8dbb91cc7f472301cc63cefcc9852c02700728b45f3f5512d9d68e1e
+    name: prometheus-ipmi-exporter
+    sources:
+    - https://github.com/prometheus-community/ipmi_exporter
+    - https://github.com/nowireless/prometheus-ipmi-exporter-docker
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/prometheus-ipmi-exporter-0.1.0/prometheus-ipmi-exporter-0.1.0.tgz
+    version: 0.1.0
+  prometheus-mqtt-exporter:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2022-07-09T02:45:38.878323063Z"
+    dependencies:
+    - name: cray-service
+      repository: https://nowireless.github.io/base-charts
+      version: 8.0.3
+    description: This is a Prometheus exporter for MQTT
+    digest: 3d47711ca972ef40c4a9d7a3384bec0d7b88f97284823373d7cc5597f5b2bca3
+    name: prometheus-mqtt-exporter
+    sources:
+    - https://github.com/kpetremann/mqtt-exporter
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/prometheus-mqtt-exporter-0.1.0/prometheus-mqtt-exporter-0.1.0.tgz
     version: 0.1.0
 generated: "2021-11-25T00:34:35.932644347Z"
