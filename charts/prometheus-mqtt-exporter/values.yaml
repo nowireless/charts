@@ -1,0 +1,36 @@
+---
+global:
+  chart:
+    name: prometheus-mqtt-exporter
+    version: 0.1.0
+  appVersion: latest
+
+cray-service:
+  type: Deployment
+  nameOverride: prometheus-mqtt-exporter
+  fullnameOverride: prometheus-mqtt-exporter
+  strategy:
+    type: Recreate
+  containers:
+  - name: mqtt-exporter
+    image:
+      repository: kpetrem/mqtt-exporter
+    env:
+    - name: MQTT_ADDRESS
+      value: mosquitto
+    ports:
+    - name: http
+      containerPort: 9000
+    livenessProbe:
+      httpGet:
+        port: 9000
+        path: /
+      initialDelaySeconds: 15
+      periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        port: 9000
+        path: /
+      initialDelaySeconds: 30
+      periodSeconds: 60
+      timeoutSeconds: 25

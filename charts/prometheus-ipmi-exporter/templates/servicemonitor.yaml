@@ -1,0 +1,33 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    {{- include "cray-service.common-labels" . | nindent 4}}
+  name: {{ include "cray-service.name" . }}-default
+spec:
+  endpoints:
+  - interval: 1m
+    params:
+      target:
+        - 10.100.0.234
+    relabelings:
+    - sourceLabels: [__address__]
+      separator: ;
+      regex: (.*)
+      targetLabel: __param_target
+      replacement: ${1}
+      action: replace
+    - sourceLabels: [__param_target]
+      separator: ;
+      regex: (.*)
+      targetLabel: instance
+      replacement: ${1}
+      action: replace
+    path: /ipmi
+    port: http
+    scrapeTimeout: 1m
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ include "cray-service.name" . }}
+      app.kubernetes.io/name: {{ include "cray-service.name" . }}

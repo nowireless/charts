@@ -1,0 +1,42 @@
+---
+global:
+  chart:
+    name: prometheus-ipmi-exporter
+    version: 0.1.0
+  appVersion: 1.4.0-b806738
+
+cray-service:
+  type: Deployment
+  nameOverride: prometheus-ipmi-exporter
+  fullnameOverride: prometheus-ipmi-exporter
+  strategy:
+    type: Recreate
+  containers:
+  - name: ipmi-exporter
+    image:
+      repository: ghcr.io/nowireless/ipmi_exporter
+    args: ["--config.file=/etc/ipmi_exporter/config.yml"] 
+    ports:
+    - name: http
+      containerPort: 9290
+    livenessProbe:
+      httpGet:
+        port: 9290
+        path: /
+      initialDelaySeconds: 15
+      periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        port: 9290
+        path: /
+      initialDelaySeconds: 30
+      periodSeconds: 60
+      timeoutSeconds: 25
+    volumeMounts:
+    - name: exporter-config-vol
+      mountPath: /etc/ipmi_exporter/
+  volumes:
+    exporter-config-vol:
+      name: exporter-config-vol
+      secret:
+        secretName: prometheus-ipmi-exporter-config

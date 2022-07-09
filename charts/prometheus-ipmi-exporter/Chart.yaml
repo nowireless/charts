@@ -1,0 +1,14 @@
+---
+apiVersion: v2
+appVersion: 1.4.0-b806738
+description: This is a Prometheus exporter for IPMI
+name: prometheus-ipmi-exporter
+type: application
+version: 0.1.0
+sources:
+- https://github.com/prometheus-community/ipmi_exporter
+- https://github.com/nowireless/prometheus-ipmi-exporter-docker
+dependencies:
+- name: cray-service
+  version: 8.0.3
+  repository: https://nowireless.github.io/base-charts
