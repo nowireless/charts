@@ -24,6 +24,25 @@ entries:
       artifacthub.io/license: MIT
     apiVersion: v2
     appVersion: 0.14.1
+    created: "2022-07-09T16:24:26.656527367Z"
+    description: cert-manager per-namespace issuer setup
+    digest: e028bf824b4a1e934d37273f062c9acc0a95c6526ec6ab8e76bbd2e88ac8bd8e
+    home: https://github.com/Cray-HPE/cray-certmanager
+    icon: https://github.com/jetstack/cert-manager/raw/master/logo/logo.png
+    keywords:
+    - cert-manager
+    maintainers:
+    - name: nowireless
+    name: cert-manager-issuers
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - https://github.com/nowireless/charts/releases/download/cert-manager-issuers-0.7.0-nowireless/cert-manager-issuers-0.7.0-nowireless.tgz
+    version: 0.7.0-nowireless
+  - annotations:
+      artifacthub.io/license: MIT
+    apiVersion: v2
+    appVersion: 0.14.1
     created: "2022-07-09T04:24:09.789432021Z"
     description: cert-manager per-namespace issuer setup
     digest: 312c504bcf6a968d106fb012e06c686d934c2064a8eea3109f3b0d01b74fe38f
