@@ -42,33 +42,33 @@ subjects:
     name: {{.Values.serviceAccount.name}}
     namespace: {{ .Release.Namespace }}
 ---
-# #
-# # Vault wait job
-# # Allow access to list pods
-# #
-# apiVersion: v1
-# kind: ServiceAccount
-# metadata:
-#   name: deploy-vault-jobs
-# ---
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: Role
-# metadata:
-#   name: deploy-vault-jobs-role
-# rules:
-# - apiGroups: [""]
-#   resources: ["pods"]
-#   verbs: ["get", "list"]
-# ---
-# kind: RoleBinding
-# apiVersion: rbac.authorization.k8s.io/v1
-# metadata:
-#   name: deploy-vault-jobs-role-binding
-# subjects:
-# - kind: ServiceAccount
-#   name: deploy-vault-jobs
-#   namespace: {{ .Release.Namespace }}
-# roleRef:
-#   apiGroup: rbac.authorization.k8s.io
-#   kind: Role
-#   name: deploy-vault-jobs-role
+#
+# Vault wait job
+# Allow access to list pods
+#
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-jobs
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: vault-jobs-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: vault-jobs-role-binding
+subjects:
+- kind: ServiceAccount
+  name: vault-jobs
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: vault-jobs-role

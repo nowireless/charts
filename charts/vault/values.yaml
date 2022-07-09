@@ -4,6 +4,13 @@ serviceAccount:
 
 nameOverride: ""
 
+# Needed for install/maintenance jobs
+kubectl:
+  image:
+    repository: bitnami/kubectl
+    tag: 1.24
+    pullPolicy: IfNotPresent
+
 allowedAuthNamespaces:
   - namespace: services
     serviceaccount: "*"
