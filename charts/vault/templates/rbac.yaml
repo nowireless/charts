@@ -1,0 +1,74 @@
+# https://github.com/banzaicloud/bank-vaults/blob/8f64b3ad773bbdf27e1e079bbe4cc9b2ce17acd9/operator/deploy/rbac.yaml
+# https://github.com/Cray-HPE/cray-vault/blob/master/charts/cray-vault/templates/rbac.yaml
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: {{.Values.serviceAccount.name}}
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{.Values.serviceAccount.name}}-secrets
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["*"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{.Values.serviceAccount.name}}-secrets
+roleRef:
+  kind: Role
+  name: {{.Values.serviceAccount.name}}-secrets
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: {{.Values.serviceAccount.name}}
+---
+# This binding allows the deployed Vault instance to authenticate clients
+# through Kubernetes ServiceAccounts (if configured so).
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{.Values.serviceAccount.name}}-auth-delegator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+  - kind: ServiceAccount
+    name: {{.Values.serviceAccount.name}}
+    namespace: {{ .Release.Namespace }}
+---
+# #
+# # Vault wait job
+# # Allow access to list pods
+# #
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: deploy-vault-jobs
+# ---
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: Role
+# metadata:
+#   name: deploy-vault-jobs-role
+# rules:
+# - apiGroups: [""]
+#   resources: ["pods"]
+#   verbs: ["get", "list"]
+# ---
+# kind: RoleBinding
+# apiVersion: rbac.authorization.k8s.io/v1
+# metadata:
+#   name: deploy-vault-jobs-role-binding
+# subjects:
+# - kind: ServiceAccount
+#   name: deploy-vault-jobs
+#   namespace: {{ .Release.Namespace }}
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: Role
+#   name: deploy-vault-jobs-role
