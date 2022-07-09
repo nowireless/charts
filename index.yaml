@@ -19,6 +19,26 @@ entries:
     urls:
     - https://github.com/nowireless/charts/releases/download/cert-manager-init-0.2.0/cert-manager-init-0.2.0.tgz
     version: 0.2.0
+  cert-manager-issuers:
+  - annotations:
+      artifacthub.io/license: MIT
+    apiVersion: v2
+    appVersion: 0.14.1
+    created: "2022-07-09T04:24:09.789432021Z"
+    description: cert-manager per-namespace issuer setup
+    digest: 312c504bcf6a968d106fb012e06c686d934c2064a8eea3109f3b0d01b74fe38f
+    home: https://github.com/Cray-HPE/cray-certmanager
+    icon: https://github.com/jetstack/cert-manager/raw/master/logo/logo.png
+    keywords:
+    - cert-manager
+    maintainers:
+    - name: nowireless
+    name: cert-manager-issuers
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - https://github.com/nowireless/charts/releases/download/cert-manager-issuers-0.6.0-nowireless/cert-manager-issuers-0.6.0-nowireless.tgz
+    version: 0.6.0-nowireless
   external-dns-etcd:
   - apiVersion: v2
     created: "2021-11-25T00:34:36.391090682Z"
@@ -158,5 +178,15 @@ entries:
     type: application
     urls:
     - https://github.com/nowireless/charts/releases/download/prometheus-mqtt-exporter-0.1.0/prometheus-mqtt-exporter-0.1.0.tgz
+    version: 0.1.0
+  vault:
+  - apiVersion: v2
+    created: "2022-07-09T04:24:09.913656732Z"
+    description: Deploy a Vault cluster using the Vault Operator
+    digest: 9208bb06ae1c26c75632f9dcb8cb750f266c266e72c3e059e1d0f8d5006e6274
+    name: vault
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/vault-0.1.0/vault-0.1.0.tgz
     version: 0.1.0
 generated: "2021-11-25T00:34:35.932644347Z"
