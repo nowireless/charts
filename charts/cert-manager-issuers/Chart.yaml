@@ -1,6 +1,6 @@
 apiVersion: v2
 name: cert-manager-issuers
-version: 0.6.0-nowireless
+version: 0.7.0-nowireless
 description: cert-manager per-namespace issuer setup
 keywords:
   - cert-manager

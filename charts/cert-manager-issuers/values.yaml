@@ -40,3 +40,10 @@ vaultIssuers:
     vaultPKIRole: pki-common
     vaultPKIPath: pki_common/sign
     vaultK8SAuthPath: /v1/auth/kubernetes
+  external-dns-common:
+    namespace: external-dns
+    instance: common
+    vaultServer: "http://vault.vault.svc.cluster.local:8200"
+    vaultPKIRole: pki-common
+    vaultPKIPath: pki_common/sign
+    vaultK8SAuthPath: /v1/auth/kubernetes
