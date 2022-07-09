@@ -3,4 +3,4 @@ apiVersion: v2
 description: Setup cert-manager for use
 name: cert-manager-init
 type: application
-version: 0.2.0
+version: 0.3.0
