@@ -5,9 +5,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: etcd-client-cert
+  name: external-dns-etcd-client-cert
   namespace: external-dns
 spec:
+  commonName: external-dns-etcd-client-cert
   dnsNames:
     - "external-dns-etcd" # Endpoint for in the same namespace
     - "*.external-dns-etcd.external-dns.svc.cluster.local" 
@@ -17,21 +18,22 @@ spec:
     - ""
   ipAddresses:
     - 127.0.0.1
-  secretName: etcd-client-cert
+  secretName: external-dns-etcd-client-cert
   usages:
     - server auth
     - client auth
   issuerRef:
-    name: cluster-issuer
-    kind: ClusterIssuer
+    name: "{{ .Values.tls.issuer }}"
+    kind: Issuer
 
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: etcd-peer-cert
+  name: external-dns-etcd-peer-cert
   namespace: external-dns
 spec:
+  commonName: external-dns-etcd-peer-cert
   dnsNames:
     - "*.external-dns-etcd.external-dns.svc.cluster.local" 
     - "*.external-dns-etcd-headless.external-dns.svc"
@@ -40,10 +42,10 @@ spec:
     - ""
   ipAddresses:
     - 127.0.0.1
-  secretName: etcd-peer-cert
+  secretName: external-dns-etcd-peer-cert
   usages:
     - server auth
     - client auth
   issuerRef:
-    name: cluster-issuer
-    kind: ClusterIssuer
+    name: "{{ .Values.tls.issuer }}"
+    kind: Issuer
