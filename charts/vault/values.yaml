@@ -15,6 +15,9 @@ allowedAuthNamespaces:
   - namespace: services
     serviceaccount: "*"
     ttl: 72h
+  - namespace: external-dns
+    serviceaccount: "*"
+    ttl: 72h
   # - namespace: cert-manager
   #   serviceaccount: "*"
   #   ttl: 72h

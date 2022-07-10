@@ -132,12 +132,13 @@ spec:
           - name: pki-common
             bound_service_account_names:
               - cert-manager-issuer-common
-            bound_service_account_namespaces:
+            bound_service_account_namespaces: # TODO Should this be templated
               - ceph-rgw
               - services
               - istio-system
               - sma
               - spire
+              - external-dns
             policies:
               - pki-common
             ttl: 1h
