@@ -60,6 +60,19 @@ entries:
     version: 0.6.0-nowireless
   external-dns-etcd:
   - apiVersion: v2
+    created: "2022-07-10T18:16:17.937116603Z"
+    dependencies:
+    - name: etcd
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.3.3
+    description: Helm chart to deploy etcd for external-dns
+    digest: 90d70c8d3b42087065ffac1671bc1c149fe6ba3d23d202d445c915b75d4e33d5
+    name: external-dns-etcd
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/external-dns-etcd-0.3.0/external-dns-etcd-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     created: "2022-07-09T15:59:04.684235065Z"
     dependencies:
     - name: etcd
