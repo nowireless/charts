@@ -257,6 +257,15 @@ entries:
     version: 0.1.0
   vault:
   - apiVersion: v2
+    created: "2023-03-06T05:02:24.026842869Z"
+    description: Deploy a Vault cluster using the Vault Operator
+    digest: 81d5305f44e276c0da4d8547788769f7b1c940bc68364169416f64184793bf11
+    name: vault
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/vault-0.3.2/vault-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
     created: "2023-03-06T04:30:33.633939879Z"
     description: Deploy a Vault cluster using the Vault Operator
     digest: ef2f1055ac9f5c70ccdfbfc19cc4cac6745e5983f96e6813a27d56f797ed8af3
@@ -292,4 +301,4 @@ entries:
     urls:
     - https://github.com/nowireless/charts/releases/download/vault-0.1.0/vault-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-06T04:30:33.633971279Z"
+generated: "2023-03-06T05:02:24.026895969Z"
