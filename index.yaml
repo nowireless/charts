@@ -60,6 +60,19 @@ entries:
     version: 0.6.0-nowireless
   external-dns-etcd:
   - apiVersion: v2
+    created: "2023-03-06T04:30:33.256291841Z"
+    dependencies:
+    - name: etcd
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.3.3
+    description: Helm chart to deploy etcd for external-dns
+    digest: e23f179fb49df5ec91c0d4b6948a14c7e1007a7857d05fb8c426ba44dcb76abb
+    name: external-dns-etcd
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/external-dns-etcd-0.4.0/external-dns-etcd-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     created: "2022-07-10T18:16:17.937116603Z"
     dependencies:
     - name: etcd
@@ -172,6 +185,24 @@ entries:
     urls:
     - https://github.com/nowireless/charts/releases/download/istio-ingress-setup-0.1.0/istio-ingress-setup-0.1.0.tgz
     version: 0.1.0
+  keycloak:
+  - apiVersion: v2
+    created: "2023-03-06T04:30:33.46112135Z"
+    dependencies:
+    - name: cray-service
+      repository: https://nowireless.github.io/base-charts
+      version: 8.0.3
+    - name: keycloak
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.6
+    digest: ad6f235bf0fed9a7a3778663ed604c8c6694705c455ef876202b6a4ed5789205
+    name: keycloak
+    sources:
+    - https://github.com/bitnami/charts/tree/master/bitnami/keycloak
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
+    version: 0.1.0
   prometheus-hue-exporter:
   - apiVersion: v2
     appVersion: 0.2.2
@@ -226,6 +257,15 @@ entries:
     version: 0.1.0
   vault:
   - apiVersion: v2
+    created: "2023-03-06T04:30:33.633939879Z"
+    description: Deploy a Vault cluster using the Vault Operator
+    digest: ef2f1055ac9f5c70ccdfbfc19cc4cac6745e5983f96e6813a27d56f797ed8af3
+    name: vault
+    type: application
+    urls:
+    - https://github.com/nowireless/charts/releases/download/vault-0.3.1/vault-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
     created: "2022-07-10T06:55:41.27556317Z"
     description: Deploy a Vault cluster using the Vault Operator
     digest: be5c5b5a68d2a72976586585731af5f09a70cf7070cbfff072c42ac8ac124529
@@ -252,4 +292,4 @@ entries:
     urls:
     - https://github.com/nowireless/charts/releases/download/vault-0.1.0/vault-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-25T00:34:35.932644347Z"
+generated: "2023-03-06T04:30:33.633971279Z"
