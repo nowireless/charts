@@ -25,6 +25,17 @@ vault:
   ui: true
   image: vault:1.6.2
   size: 3
+  # affinity: # TODO
+  #   podAntiAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #     - topologyKey: kubernetes.io/hostname
+  #       labelSelector:
+  #         matchExpressions:
+  #           - key: app.kubernetes.io/name
+  #             operator: In
+  #             values: 
+  #             - "{{ include "deploy-vault.name" . }}" # TODO check
+   
 
 raft:
   performance_multiplier: 5

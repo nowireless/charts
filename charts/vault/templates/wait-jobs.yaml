@@ -35,7 +35,7 @@ spec:
             - '/bin/sh'
           args:
             - '-c'
-            - 'SLEEP=10; ITER=90; NEED_CNT=3; for i in `seq 1 $ITER`; do READY_CNT=$(kubectl get po -n "$MY_POD_NAMESPACE" -o json | jq ".items[] | select(.metadata.name | match(\"vault-[0-9]\")) | select(.status.phase == \"Running\") | .metadata.name" | wc -l); [ "$READY_CNT" -eq "$NEED_CNT" ] && break; echo "[Attempt:${i}] Waiting for vault pods to be RUNNING (${READY_CNT}/${NEED_CNT}), sleeping $SLEEP seconds."; sleep $SLEEP; done; echo "*** VAULT PODS RUNNING ***"'
+            - 'SLEEP=10; ITER=90; NEED_CNT={{.Values.vault.size}}; for i in `seq 1 $ITER`; do READY_CNT=$(kubectl get po -n "$MY_POD_NAMESPACE" -o json | jq ".items[] | select(.metadata.name | match(\"vault-[0-9]\")) | select(.status.phase == \"Running\") | .metadata.name" | wc -l); [ "$READY_CNT" -eq "$NEED_CNT" ] && break; echo "[Attempt:${i}] Waiting for vault pods to be RUNNING (${READY_CNT}/${NEED_CNT}), sleeping $SLEEP seconds."; sleep $SLEEP; done; echo "*** VAULT PODS RUNNING ***"'
           env:
             - name: MY_POD_NAMESPACE
               valueFrom:
