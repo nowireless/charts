@@ -1,0 +1,6 @@
+dependencies:
+- name: cray-service
+  repository: https://nowireless.github.io/base-charts
+  version: 8.0.3
+digest: sha256:f8ff3129241ab7e19bad4937f9aa2a43ad6a0a9b9e071ce265f975454604b44c
+generated: "2022-07-04T17:14:22.411832-05:00"

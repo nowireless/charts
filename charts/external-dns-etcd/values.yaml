@@ -19,6 +19,10 @@ etcd:
     enabled: true
 
   replicaCount: 3
+  pdb:
+    minAvailable: 2
+  #   maxUnavailable: 1
+  removeMemberOnContainerTermination: true
 
   # extraEnvVars:
   # - name: BITNAMI_DEBUG
@@ -53,3 +57,11 @@ etcd:
       certFilename: tls.crt
       certKeyFilename: tls.key
       caFilename: ca.crt
+
+  disasterRecovery:
+    enabled: true
+    historyLimit: 2
+    snapshotHistoryLimit: 2
+    pvc:
+      size: 4Gi
+      storageClassName: "longhorn"

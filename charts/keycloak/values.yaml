@@ -1,0 +1,98 @@
+---
+global:
+  chart:
+    name: keycloak
+#     version: 0.1.0
+#   appVersion: 0.2.2
+
+# The following is for the webhook job
+vault:
+  image:
+    repository: vault
+    tag: 1.6.2
+    pullPolicy: IfNotPresent
+
+cray-service:
+  type: None
+
+  nameOverride: keycloak
+  fullnameOverride: keycloak
+
+  service:
+    enabled: false
+
+  sqlCluster:
+    enabled: true
+    users:
+      keycloakuser: []
+    databases:
+      keycloak: keycloakuser
+    tls:
+      enabled: true
+
+keycloak:
+  podAnnotations:
+    vault.security.banzaicloud.io/vault-addr: http://vault.vault.svc.cluster.local:8200
+    vault.security.banzaicloud.io/vault-role: services
+
+
+  ## Keycloak authentication parameters
+  ## ref: https://github.com/bitnami/bitnami-docker-keycloak#admin-credentials
+  ##
+  auth:
+    ## @param auth.adminUser Keycloak administrator user
+    ##
+    adminUser: admin
+    ## @param auth.managementUser Wildfly management user
+    ##
+    managementUser: manager
+    ## @param auth.existingSecret An already existing secret containing auth info
+    ## e.g:
+    ## existingSecret:
+    ##   name: mySecret
+    ##   keyMapping:
+    ##     admin-password: myPasswordKey
+    ##     management-password: myManagementPasswordKey
+    ##     tls-keystore-password: myTlsKeystorePasswordKey
+    ##     tls-truststore-password: myTlsTruststorePasswordKey
+    ##
+    existingSecret:
+      name: keycloak-creds
+      keyMapping:
+        admin-password: admin-password
+        management-password: management-password
+        tls-keystore-password: tls-keystore-password
+        tls-truststore-password: tls-truststore-password
+
+  ## @section Keycloak statefulset parameters
+
+  ## @param replicaCount Number of Keycloak replicas to deploy
+  ##
+  replicaCount: 3
+
+  ## Service configuration
+  ##
+  service:
+    type: ClusterIP
+
+  ## Metrics configuration
+  ##
+  metrics:
+    ## @param metrics.enabled Enable exposing Keycloak statistics
+    ## ref: https://github.com/bitnami/bitnami-docker-keycloak#enabling-statistics
+    ##
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+  # We want to use the postgres-operator for the postgres cluster
+  postgresql:
+    enabled: false
+
+  externalDatabase:
+    host: keycloak-cray-service-postgres
+    port: 5432
+    user: keycloakuser
+    database: keycloak
+    existingSecret: keycloakuser.keycloak-postgres.credentials
+    existingSecretPasswordKey: password
