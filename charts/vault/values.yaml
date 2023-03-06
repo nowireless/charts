@@ -24,6 +24,7 @@ allowedAuthNamespaces:
 vault:
   ui: true
   image: vault:1.6.2
+  size: 3
 
 raft:
   performance_multiplier: 5

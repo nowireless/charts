@@ -7,8 +7,8 @@ metadata:
     vault_cr: "{{ include "deploy-vault.name" . }}"
 
 spec:
-  size: 3
-  image: "{{.Values.image}}"
+  size: {{.Values.vault.size}}
+  image: "{{.Values.vault.image}}"
 
   affinity:
     podAntiAffinity:

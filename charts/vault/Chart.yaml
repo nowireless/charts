@@ -3,4 +3,4 @@ apiVersion: v2
 description: Deploy a Vault cluster using the Vault Operator
 name: vault
 type: application
-version: 0.3.0
+version: 0.3.1
